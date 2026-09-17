@@ -6,12 +6,12 @@ import { StatusBar } from 'expo-status-bar';
 import { generateTrail, starterTrail, type MemoryTrail } from './src/domain/trails';
 import { DemoBillingGateway, type BillingGateway } from './src/domain/billing';
 import { AsyncTrailRepository } from './src/services/asyncTrailRepository';
-import { RevenueCatBillingGateway } from './src/services/revenueCatBilling';
+import { createRevenueCatBilling } from './src/services/revenueCatSdk';
 
 type Screen = 'home' | 'create' | 'trail' | 'recall' | 'paywall' | 'library';
 const colors = { ink: '#171828', paper: '#F7F4EC', plum: '#542B66', violet: '#8659A6', lavender: '#DCC8F2', coral: '#FF7657', mint: '#C8E6D0', white: '#FFFFFF', muted: '#727180' };
 const revenueCatKey = process.env.EXPO_PUBLIC_REVENUECAT_API_KEY;
-const billing: BillingGateway = revenueCatKey ? new RevenueCatBillingGateway(revenueCatKey) : new DemoBillingGateway();
+const billing: BillingGateway = revenueCatKey ? createRevenueCatBilling(revenueCatKey) : new DemoBillingGateway();
 const repository = new AsyncTrailRepository();
 
 export default function App() {

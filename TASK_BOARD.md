@@ -29,7 +29,7 @@ Ship a polished, testable Expo mobile app and a sub-two-minute Remotion demo for
 - [x] Add `react-native-purchases` behind a typed billing gateway.
 - [x] Implement entitlement state, offerings, restore purchases, and paywall UI.
 - [x] Keep a clearly labelled local demo billing adapter for tests and judge preview.
-- [x] Unit-test the billing contract; native sandbox integration remains external.
+- [x] Test both billing adapters, SDK configuration, annual offering selection, entitlements, restore, and failure state; native sandbox integration remains external.
 - [!] Create RevenueCat project and run a sandbox purchase (requires authenticated account/project credentials).
 
 ## 15–19 hours — Quality gate
