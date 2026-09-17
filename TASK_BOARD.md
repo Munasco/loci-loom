@@ -21,7 +21,7 @@ Ship a polished, testable Expo mobile app and a sub-two-minute Remotion demo for
 - [x] Build deterministic trail generation for a reliable judge demo.
 - [x] Build the five-scene memory-trail player with gradients and haptics.
 - [x] Build recall challenge, answer feedback, and a streak surface.
-- [ ] Add progress persistence and the full trail library.
+- [x] Add saved-trail persistence, deduplication, and the trail library.
 - [~] Add accessibility labels and purchase error states; reduced-motion remains.
 
 ## 10–15 hours — RevenueCat and monetization

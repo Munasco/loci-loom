@@ -10,7 +10,7 @@ Loci Loom is an Expo learning game that converts a subject into five visual memo
 - Deterministic trail generation for a reliable, offline judge demo.
 - RevenueCat SDK adapter for offerings, purchases, entitlement checks, and restoration.
 - Explicit demo billing adapter when no public SDK key is configured.
-- Three domain tests, strict TypeScript, compiled web output, and a full browser smoke test.
+- Four domain tests, strict TypeScript, compiled web output, and a reproducible full browser smoke test.
 - A tested 54-second Remotion submission video built from real product screenshots.
 
 ## Run the app
@@ -38,7 +38,7 @@ npm run lint
 npm run render
 ```
 
-The browser smoke test covers topic entry, generation, all trail stops, recall selection, and paywall arrival at a 393×852 viewport. Store artwork is in `submission/`.
+The browser smoke test covers topic entry, generation, all trail stops, recall selection, paywall arrival, and the saved-trail library at a 393×852 viewport. Store artwork is in `submission/`.
 
 ## Structure
 

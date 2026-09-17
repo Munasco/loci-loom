@@ -32,7 +32,9 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test": "jest --runInBand",
-    "export:web": "expo export --platform web"
+    "export:web": "expo export --platform web",
+    "smoke:web": "npm run export:web && node scripts/smoke-web.mjs",
+    "verify": "npm run typecheck && npm test && npm run smoke:web"
   },
   "jest": {
     "preset": "jest-expo",
