@@ -9,8 +9,9 @@ Loci Loom is an Expo learning game that converts a subject into five visual memo
 - Polished mobile flow: home → topic → five-stop trail → recall → paywall.
 - Deterministic trail generation for a reliable, offline judge demo.
 - RevenueCat SDK adapter for offerings, purchases, entitlement checks, and restoration.
+- Server-side Nebius Nemotron adapter with strict output validation and an opt-in mobile HTTP client.
 - Explicit demo billing adapter when no public SDK key is configured.
-- Eleven domain and RevenueCat-adapter tests, strict TypeScript, compiled web output, and a reproducible full browser smoke test.
+- Seventeen mobile and AI-service tests, strict TypeScript, compiled web output, and a reproducible full browser smoke test.
 - A tested 54-second Remotion submission video with a no-credit neural voiceover, built from real product screenshots.
 
 ## Run the app
@@ -48,6 +49,7 @@ The browser smoke test covers topic entry, generation, all trail stops, recall s
 ## Structure
 
 - `apps/mobile/` — Expo + React Native product.
+- `apps/ai-api/` — Nebius Token Factory/Nemotron generation service.
 - `apps/video/` — Remotion composition and verified MP4 source.
 - `submission/` — store screenshot, icon, and submission copy.
 - `TASK_BOARD.md` — live delivery and external-dependency checklist.

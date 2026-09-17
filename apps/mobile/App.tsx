@@ -4,15 +4,19 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import { StatusBar } from 'expo-status-bar';
 import { generateTrail, starterTrail, type MemoryTrail } from './src/domain/trails';
+import type { TrailGenerator } from './src/domain/trailGenerator';
 import { DemoBillingGateway, type BillingGateway } from './src/domain/billing';
 import { AsyncTrailRepository } from './src/services/asyncTrailRepository';
 import { createRevenueCatBilling } from './src/services/revenueCatSdk';
+import { HttpTrailGenerator } from './src/services/httpTrailGenerator';
 
 type Screen = 'home' | 'create' | 'trail' | 'recall' | 'paywall' | 'library';
 const colors = { ink: '#171828', paper: '#F7F4EC', plum: '#542B66', violet: '#8659A6', lavender: '#DCC8F2', coral: '#FF7657', mint: '#C8E6D0', white: '#FFFFFF', muted: '#727180' };
 const revenueCatKey = process.env.EXPO_PUBLIC_REVENUECAT_API_KEY;
 const billing: BillingGateway = revenueCatKey ? createRevenueCatBilling(revenueCatKey) : new DemoBillingGateway();
 const repository = new AsyncTrailRepository();
+const trailApiUrl = process.env.EXPO_PUBLIC_TRAIL_API_URL;
+const generator: TrailGenerator = trailApiUrl ? new HttpTrailGenerator(trailApiUrl) : { generate: async topic => generateTrail(topic) };
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>('home');
@@ -23,6 +27,7 @@ export default function App() {
   const [isPro, setIsPro] = useState(false);
   const [isPurchasing, setIsPurchasing] = useState(false);
   const [savedTrails, setSavedTrails] = useState<MemoryTrail[]>([starterTrail]);
+  const [isGenerating, setIsGenerating] = useState(false);
   const go = (next: Screen) => { Haptics.selectionAsync().catch(() => undefined); setScreen(next); };
   const progress = useMemo(() => `${scene + 1} / ${trail.scenes.length}`, [scene, trail]);
   useEffect(() => { billing.getAccess().then(access => setIsPro(access === 'scholar')).catch(() => undefined); }, []);
@@ -33,7 +38,7 @@ export default function App() {
     <Text style={styles.sub}>We’ll turn it into five strange, visual stops your mind can revisit.</Text><Text style={styles.label}>TOPIC OR CONCEPT</Text>
     <TextInput accessibilityLabel="Topic" value={topic} onChangeText={setTopic} placeholder="e.g. How photosynthesis works" placeholderTextColor="#9994A0" multiline style={styles.input} />
     <View style={styles.suggestionRow}>{['The immune system', 'SQL joins', 'French verbs'].map(item => <Pressable key={item} onPress={() => setTopic(item)} style={styles.chip}><Text style={styles.chipText}>{item}</Text></Pressable>)}</View>
-    <PrimaryButton label="Weave my trail" disabled={!topic.trim()} onPress={() => { const next = generateTrail(topic); setTrail(next); setSavedTrails(items => [next, ...items.filter(item => item.id !== next.id)]); repository.save(next).catch(() => undefined); setScene(0); setAnswer(null); go('trail'); }} />
+    <PrimaryButton label={isGenerating ? 'Weaving your world…' : 'Weave my trail'} disabled={!topic.trim() || isGenerating} onPress={async () => { try { setIsGenerating(true); const next = await generator.generate(topic); setTrail(next); setSavedTrails(items => [next, ...items.filter(item => item.id !== next.id)]); await repository.save(next); setScene(0); setAnswer(null); go('trail'); } catch (error) { Alert.alert('The trail could not be woven', error instanceof Error ? error.message : 'Please try again.'); } finally { setIsGenerating(false); } }} />
   </ScrollView></Shell>;
 
   if (screen === 'trail') {

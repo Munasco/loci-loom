@@ -17,14 +17,19 @@ jobs:
           cache: npm
           cache-dependency-path: |
             apps/mobile/package-lock.json
+            apps/ai-api/package-lock.json
             apps/video/package-lock.json
       - name: Install mobile dependencies
         run: npm ci --prefix apps/mobile
       - name: Install video dependencies
         run: npm ci --prefix apps/video
+      - name: Install AI API dependencies
+        run: npm ci --prefix apps/ai-api
       - name: Verify mobile types and tests
         run: npm --prefix apps/mobile run typecheck && npm --prefix apps/mobile test
       - name: Export web app
         run: npm --prefix apps/mobile run export:web
+      - name: Verify Nebius service
+        run: npm --prefix apps/ai-api run verify
       - name: Verify Remotion source
         run: npm --prefix apps/video run lint

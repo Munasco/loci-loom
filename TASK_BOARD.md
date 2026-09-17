@@ -57,5 +57,7 @@ Ship a polished, testable Expo mobile app and a sub-two-minute Remotion demo for
 
 ## Later extensions
 
-- [ ] Nebius: replace the generator provider with Nemotron through Token Factory; add adaptive recall and evaluation traces.
+- [x] Nebius: add the Token Factory/Nemotron server adapter, strict model-output validation, mobile HTTP boundary, and injected-network tests.
+- [!] Nebius: obtain free Builder Program credits and record a live hosted-generation proof.
+- [ ] Nebius: add mnemonic-quality evaluation traces and adaptive recall.
 - [ ] Alexa+: expose daily recall as a stateful Agent Skill/MCP flow and produce a simulated-device demo.

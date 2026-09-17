@@ -23,7 +23,7 @@ Definition of done: configure the Test Store, `scholar` entitlement, and annual 
 
 ## 2. Nebius: adaptive mnemonic intelligence
 
-Extension: replace deterministic generation with a Nemotron-powered trail generator on Nebius Token Factory. Ask the model to produce structured stops, then run a second evaluator pass that scores distinctiveness, causal accuracy, and visual contrast. Recall history adjusts the next trail and produces an explainable “memory strength” trace.
+Implemented foundation: an opt-in mobile `TrailGenerator` calls a server-side Nemotron client on Nebius Token Factory. The key stays off-device, all output is schema-validated, malformed responses are rejected, and the complete network boundary is tested without spending credits. The next pass adds a second evaluator that scores distinctiveness, causal accuracy, and visual contrast; recall history will adjust the next trail and produce an explainable “memory strength” trace.
 
 Why this is the next build: it raises technical depth without changing the polished client. The interface boundary is already clear; fixtures keep generation tests deterministic while a recorded integration test proves the hosted model path.
 
