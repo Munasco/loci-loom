@@ -15,7 +15,7 @@
 ## Device-only checks remaining
 
 - Configure the RevenueCat Test Store, `scholar` entitlement, and annual package.
-- Add `EXPO_PUBLIC_REVENUECAT_API_KEY` and create an Expo development build.
+- Add `EXPO_PUBLIC_REVENUECAT_API_KEY` and run the checked-in EAS `development` build profile.
 - Complete a sandbox purchase, entitlement refresh, cancellation, and restoration on iOS or Android.
 - Confirm haptics, safe areas, and reduced-motion behavior on physical hardware.
 

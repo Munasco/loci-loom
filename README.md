@@ -23,7 +23,7 @@ npm install
 npm run web
 ```
 
-For the native RevenueCat path, copy `.env.example` to `.env.local`, add a public RevenueCat SDK key, configure a `scholar` entitlement with an annual package, and use an Expo development build. Expo Go cannot execute native purchases.
+For the native RevenueCat path, copy `.env.example` to `.env.local`, add a public RevenueCat SDK key, and configure a `scholar` entitlement with an annual package. `expo-dev-client` and `apps/mobile/eas.json` provide the internal development-build profile required for native purchase testing; Expo Go cannot execute native purchases.
 
 ## Quality gates
 
