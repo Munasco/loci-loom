@@ -1,0 +1,9 @@
+**/node_modules/
+**/dist/
+**/.expo/
+**/.env
+**/.env.local
+apps/video/out/
+qa-*.png
+*.tsbuildinfo
+.DS_Store
