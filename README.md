@@ -28,6 +28,9 @@ For the native RevenueCat path, copy `.env.example` to `.env.local`, add a publi
 ## Quality gates
 
 ```bash
+# Run the complete source gate from the repository root
+npm run verify
+
 cd apps/mobile
 npm run typecheck
 npm test
@@ -37,6 +40,8 @@ cd ../video
 npm run lint
 npm run render
 ```
+
+The same type, unit, export, and Remotion-source gates run in GitHub Actions on every push and pull request. The browser smoke test stays in the local `verify` command because it targets the installed Chrome binary directly.
 
 The browser smoke test covers topic entry, generation, all trail stops, recall selection, paywall arrival, and the saved-trail library at a 393×852 viewport. Store artwork is in `submission/`.
 

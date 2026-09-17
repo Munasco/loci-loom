@@ -1,0 +1,9 @@
+{
+  "name": "loci-loom",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "verify": "npm --prefix apps/mobile run verify && npm --prefix apps/video run lint",
+    "render:video": "npm --prefix apps/video run render"
+  }
+}
