@@ -12,7 +12,7 @@ Loci Loom is an Expo learning game that converts a subject into five visual memo
 - Server-side Nebius Nemotron adapter with strict output validation and an opt-in mobile HTTP client.
 - Explicit demo billing adapter when no public SDK key is configured.
 - Seventeen mobile and AI-service tests, strict TypeScript, compiled web output, and a reproducible full browser smoke test.
-- A tested 54-second Remotion submission video with a no-credit neural voiceover, built from real product screenshots.
+- A tested 54-second Remotion submission video with a no-credit neural voiceover, built from real product screenshots. [Play the compatible MP4](submission/loci-loom-demo.mp4).
 
 ## Run the app
 
@@ -44,7 +44,7 @@ npm run render
 
 The same type, unit, export, and Remotion-source gates run in GitHub Actions on every push and pull request. The browser smoke test stays in the local `verify` command because it targets the installed Chrome binary directly.
 
-The browser smoke test covers topic entry, generation, all trail stops, recall selection, paywall arrival, and the saved-trail library at a 393×852 viewport. Store artwork is in `submission/`.
+The browser smoke tests cover topic entry, generation, all trail stops, recall selection, paywall arrival, the saved-trail library, and real MP4 playback and seeking in Chrome. Store artwork is in `submission/`.
 
 ## Structure
 
