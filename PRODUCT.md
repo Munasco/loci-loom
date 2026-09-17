@@ -14,11 +14,10 @@ Loci Loom is a mobile learning game that converts a topic into a short sequence 
 
 ## Two-day scope
 
-The shipped MVP will include onboarding, a deterministic trail-generation demo, five-scene playback, recall scoring, persistence, a library, a RevenueCat-backed entitlement boundary, and a polished paywall. It will not pretend that unconfigured cloud AI or purchases are live: external services remain explicit adapters with honest demo states.
+The shipped MVP includes onboarding, accurate deterministic trails for the immune system, SQL joins, and French verbs, a generic fallback, five-scene playback, recall, persistence, a library, a RevenueCat-backed entitlement boundary, and a polished paywall. It does not pretend that unconfigured cloud AI or purchases are live: external services remain explicit adapters with honest demo states.
 
 ## Prize strategy
 
 1. **RevenueCat Next Gen — primary.** Best balance of prize value, student eligibility, no store fee, and a repo/video-based judging path.
 2. **Nebius Best Apps and Agents / Personal AI — extension.** Strong fit once Nemotron generation and persistent adaptive learning are connected.
 3. **Amazon Alexa+ — extension.** A stateful daily-recall Agent Skill is credible, but device/simulation requirements make it a worse first 24-hour target.
-

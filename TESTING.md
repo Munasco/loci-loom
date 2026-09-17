@@ -3,7 +3,7 @@
 | Gate | Command / method | Result |
 | --- | --- | --- |
 | Type safety | `cd apps/mobile && npm run typecheck` | Pass |
-| Domain and SDK-adapter tests | `cd apps/mobile && npm test` | 4 suites, 9 tests pass |
+| Domain and SDK-adapter tests | `cd apps/mobile && npm test` | 4 suites, 11 tests pass |
 | Production bundle | `cd apps/mobile && npm run export:web` | Pass |
 | Product smoke test | `cd apps/mobile && npm run smoke:web` | Home → create → five stops → recall → paywall → saved library pass |
 | Video source | `cd apps/video && npm run lint` | ESLint and TypeScript pass |

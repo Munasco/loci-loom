@@ -24,7 +24,7 @@ try {
   await page.getByText('Weave my trail').click();
   for (let index = 0; index < 4; index += 1) await page.getByText('Walk to the next stop').click();
   await page.getByText('Test my memory').click();
-  await page.getByText('The upside-down garden').click();
+  await page.getByText('The key workshop').click();
   await page.getByText('Continue').click();
   if (!(await page.getByText('Make knowledge impossible to lose.').isVisible())) throw new Error('Paywall was not reached');
   await page.getByLabel('Back').click();
