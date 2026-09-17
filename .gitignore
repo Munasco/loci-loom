@@ -3,7 +3,8 @@
 **/.expo/
 **/.env
 **/.env.local
+**/.venv/
 apps/video/out/
-qa-*.png
+/qa-*.png
 *.tsbuildinfo
 .DS_Store

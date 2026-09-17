@@ -8,7 +8,7 @@
 | Product smoke test | `cd apps/mobile && npm run smoke:web` | Home → create → five stops → recall → paywall → saved library pass |
 | Video source | `cd apps/video && npm run lint` | ESLint and TypeScript pass |
 | Video still | Frame 780 at 1920×1080 | Inspected, pass |
-| Video render | `cd apps/video && npm run render` | 54.0 seconds, H.264, 3.2 MB |
+| Video render | `cd apps/video && npm run render` | 54.0 seconds, H.264 with measured 51.96-second voiceover |
 | Video integrity | FFmpeg full decode | No errors |
 | Video production audit | `npm audit --omit=dev` | 0 vulnerabilities |
 

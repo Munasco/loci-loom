@@ -44,7 +44,7 @@ Ship a polished, testable Expo mobile app and a sub-two-minute Remotion demo for
 
 - [x] Add a 1024×1024 icon and required 1179×2556 screenshot.
 - [x] Create a five-scene Remotion composition under two minutes.
-- [x] Render the final 54-second MP4, inspect a 1080p frame, and decode-check the file.
+- [x] Render the final narrated 54-second MP4, inspect a 1080p frame, and decode-check both media streams.
 - [x] Write README, architecture, setup, testing, RevenueCat integration, and demo instructions.
 - [x] Add MIT license and submission copy.
 
