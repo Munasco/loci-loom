@@ -1,4 +1,4 @@
-export type TrailScene = { place: string; emoji: string; title: string; story: string; anchor: string; gradient: readonly [string, string] };
+export type TrailScene = { place: string; palacePlace?: string; emoji: string; title: string; story: string; anchor: string; gradient: readonly [string, string] };
 import type { ReviewState } from './recall';
 
 export type MemoryTrail = { id: string; topic: string; scenes: TrailScene[]; quiz: { prompt: string; options: string[]; correct: number; explanation: string }; review?: ReviewState; sourceProvided?: boolean };

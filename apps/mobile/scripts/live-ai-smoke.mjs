@@ -52,12 +52,13 @@ try {
     console.log(`App state after generation: ${(await page.locator('body').innerText()).slice(0, 800)}`);
     throw error;
   }
-  await page.getByText('Enter the first stop').click();
+  for (let index = 0; index < 5; index += 1) await page.getByLabel(/, empty$/).first().click();
+  await page.getByText('Enter my palace').click();
   const scene = await page.locator('body').innerText();
   if (!scene.includes('STOP 1') || scene.includes('Picture The Krebs cycle as something alive here')) {
     throw new Error('The mobile app did not render a model-generated trail');
   }
-  console.log('Live AI smoke passed: arbitrary topic → validated model trail → spatial map → first stop');
+  console.log('Live AI smoke passed: arbitrary topic → validated model trail → five placements → first palace stop');
 } finally {
   await browser.close();
   server.close();

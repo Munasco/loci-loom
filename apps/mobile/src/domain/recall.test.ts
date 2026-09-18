@@ -11,6 +11,16 @@ describe('adaptive recall', () => {
     }
   });
 
+  it('builds recall from the landmarks the learner chose', () => {
+    const places = ['The velvet door', 'The moonlit window', 'The story shelf', 'The map desk', 'The marble statue'];
+    const placedTrail = { ...starterTrail, scenes: starterTrail.scenes.map((scene, index) => ({ ...scene, palacePlace: places[index] })) };
+    const questions = buildRecallQuestions(placedTrail);
+    expect(questions[0].prompt).toContain(starterTrail.scenes[0].title);
+    expect(questions[0].options[questions[0].correct]).toBe('The velvet door');
+    expect(questions[1].prompt).toMatch(/velvet door|moonlit window|story shelf|map desk|marble statue/i);
+    expect(questions[2].prompt).toContain('landmark');
+  });
+
   it('schedules a perfect recall three days out', () => {
     const now = new Date('2026-09-17T12:00:00.000Z');
     const updated = applyRecallResult(starterTrail, 3, 3, now);

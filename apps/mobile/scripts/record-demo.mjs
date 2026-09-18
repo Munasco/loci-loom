@@ -7,6 +7,7 @@ const root = normalize(join(process.cwd(), 'dist'));
 const outputDir = normalize(join(process.cwd(), '..', 'video', 'public', 'footage'));
 const outputPath = join(outputDir, 'product-run.webm');
 const paywallPath = normalize(join(process.cwd(), '..', 'video', 'public', 'screens', 'qa-mobile-paywall.png'));
+const palacePath = normalize(join(process.cwd(), '..', 'video', 'public', 'screens', 'qa-mobile-palace.png'));
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.ico': 'image/x-icon' };
 const pause = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
@@ -40,7 +41,12 @@ try {
   await pause(600);
   await page.getByText('Weave my trail').click();
   await pause(1100);
-  await page.getByText('Enter the first stop').click();
+  for (let index = 0; index < 5; index += 1) {
+    await page.getByLabel(/, empty$/).first().click();
+    await pause(500);
+  }
+  await page.screenshot({ path: palacePath });
+  await page.getByText('Enter my palace').click();
   await pause(900);
 
   for (let index = 0; index < 4; index += 1) {
@@ -50,7 +56,7 @@ try {
   await page.getByText('Test my memory').click();
   await pause(1000);
 
-  await page.getByText('The key workshop').click();
+  await page.getByText('The velvet door').click();
   await pause(450);
   await page.getByText('Continue').click();
   await pause(750);
@@ -58,7 +64,7 @@ try {
   await pause(450);
   await page.getByText('Continue').click();
   await pause(750);
-  await page.getByText('The alarm canal', { exact: true }).click();
+  await page.getByText('The moonlit window', { exact: true }).click();
   await pause(450);
   await page.getByText('See my memory trace').click();
   await pause(2500);
@@ -76,5 +82,7 @@ try {
   server.close();
 }
 
-copyFileSync(await video.path(), outputPath);
+const recordedPath = await video.path();
+copyFileSync(recordedPath, outputPath);
+if (normalize(recordedPath) !== normalize(outputPath)) unlinkSync(recordedPath);
 console.log(`Recorded real product run: ${outputPath}`);

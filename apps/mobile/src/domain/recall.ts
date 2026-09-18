@@ -20,6 +20,28 @@ export function buildRecallQuestions(trail: MemoryTrail): RecallQuestion[] {
   const orderIndex = stableIndex(`${trail.id}-order`, trail.scenes.length - 1);
   const conceptScene = trail.scenes[conceptIndex];
   const nextScene = trail.scenes[orderIndex + 1];
+  const usesPalace = trail.scenes.every(scene => scene.palacePlace);
+
+  if (usesPalace) return [
+    {
+      prompt: `Where did you place “${trail.scenes[0].title}”?`,
+      options: trail.scenes.map(scene => scene.palacePlace!),
+      correct: 0,
+      explanation: `${trail.scenes[0].palacePlace} holds “${trail.scenes[0].title}”: ${trail.scenes[0].anchor}`,
+    },
+    {
+      prompt: `What idea belongs at ${conceptScene.palacePlace}?`,
+      options: trail.scenes.map(scene => scene.title),
+      correct: conceptIndex,
+      explanation: `${conceptScene.palacePlace} holds “${conceptScene.title}”: ${conceptScene.anchor}`,
+    },
+    {
+      prompt: `Which landmark comes directly after ${trail.scenes[orderIndex].palacePlace}?`,
+      options: trail.scenes.map(scene => scene.palacePlace!),
+      correct: orderIndex + 1,
+      explanation: `${nextScene.palacePlace} is next in the route you built. Recalling the path strengthens the ideas attached to it.`,
+    },
+  ];
 
   return [
     trail.quiz,

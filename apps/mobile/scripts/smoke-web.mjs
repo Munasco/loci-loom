@@ -22,16 +22,18 @@ try {
   await page.getByText('Weave a new trail').click();
   await page.getByLabel('Topic').fill('The immune system');
   await page.getByText('Weave my trail').click();
-  if (!(await page.getByText('YOUR FIVE-STOP ROUTE').isVisible())) throw new Error('Spatial palace map was not reached');
-  await page.getByText('Enter the first stop').click();
+  if (!(await page.getByText('MAKE THE ROOM YOURS').isVisible())) throw new Error('Interactive palace was not reached');
+  await page.getByLabel(/Drag .* to a landmark/).dragTo(page.getByLabel('The velvet door, empty'));
+  for (let index = 0; index < 4; index += 1) await page.getByLabel(/, empty$/).first().click();
+  await page.getByText('Enter my palace').click();
   for (let index = 0; index < 4; index += 1) await page.getByText('Walk to the next stop').click();
   await page.getByText('Test my memory').click();
-  await page.getByText('The sentinel gate').click();
-  await page.getByText('The key workshop', { exact: true }).click({ force: true });
+  await page.getByText('The moonlit window').click();
+  await page.getByText('The velvet door', { exact: true }).click({ force: true });
   await page.getByText('Continue').click();
   await page.getByText('Memory makes round two faster').click();
   await page.getByText('Continue').click();
-  await page.getByText('The alarm canal', { exact: true }).click();
+  await page.getByText('The moonlit window', { exact: true }).click();
   await page.getByText('See my memory trace').click();
   if (!(await page.getByText('The route is taking shape.').isVisible())) throw new Error('Adaptive recall result was not reached or the first answer was not locked');
   await page.getByText('Explore Scholar Pass').click();
@@ -40,7 +42,7 @@ try {
   if (!(await page.getByText('67% RECALL').isVisible())) throw new Error('Recall accuracy was not persisted to the home screen');
   await page.getByText('SEE ALL').click();
   if (!(await page.getByText('The immune system').isVisible())) throw new Error('Saved trail was not visible in the library');
-  console.log('Smoke test passed: create → five stops → adaptive recall → memory trace → paywall → saved library');
+  console.log('Smoke test passed: create → place five memories → palace walk → adaptive recall → paywall → saved library');
 } finally {
   await browser.close();
   server.close();
