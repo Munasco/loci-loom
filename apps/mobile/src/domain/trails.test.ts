@@ -4,4 +4,5 @@ describe('generateTrail', () => {
   it('rejects an empty topic', () => { expect(() => generateTrail('   ')).toThrow('A topic is required'); });
   it('builds an accurate immune-system trail for the judge-facing suggestion', () => { const trail = generateTrail('The immune system'); expect(trail.scenes.map(scene => scene.anchor).join(' ')).toContain('Adaptive immunity'); expect(trail.scenes.map(scene => scene.anchor).join(' ')).toContain('cytotoxic T cells'); expect(trail.quiz.correct).toBe(2); });
   it('maps SQL join types to distinct spatial rules', () => { const trail = generateTrail('SQL joins'); expect(trail.scenes.map(scene => scene.title)).toEqual(expect.arrayContaining(['INNER keeps mutual matches', 'LEFT keeps every left row', 'CROSS makes every pairing'])); });
+  it('answers question-shaped prompts with an accurate Python hashing trail', () => { const trail = generateTrail('What is hashing in Python?'); const anchors = trail.scenes.map(scene => scene.anchor).join(' '); expect(anchors).toContain('Dictionaries and sets'); expect(anchors).toContain('hash collision'); expect(anchors).toContain('password-hashing'); });
 });

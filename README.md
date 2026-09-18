@@ -1,8 +1,8 @@
 # Loci Loom
 
-Turn anything you study into a world you can walk through.
+Turn anything you need to remember into a world you can walk through.
 
-Loci Loom is an Expo learning game that converts a subject—or the learner's own notes—into five spatial memory stops, then tests retrieval from three angles. A free learner can create three trails; Scholar Pass unlocks unlimited trails and deeper adaptive practice through a RevenueCat entitlement.
+Loci Loom is an Expo memory tool that converts a question, topic, or source material into five spatial memory stops, then tests retrieval from three angles. It works for professional concepts, personal knowledge, languages, and formal study. A free user can create three trails; Scholar Pass unlocks unlimited trails and deeper adaptive practice through a RevenueCat entitlement.
 
 ## What is working
 

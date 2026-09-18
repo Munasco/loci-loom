@@ -9,10 +9,21 @@ export function generateTrail(rawTopic: string): MemoryTrail {
   const topic = rawTopic.trim().replace(/\s+/g, ' ');
   if (!topic) throw new Error('A topic is required');
   const normalized = topic.toLowerCase();
+  if (normalized.includes('python') && normalized.includes('hash')) return pythonHashingTrail(topic);
   if (normalized.includes('immune')) return immuneTrail(topic);
   if (normalized.includes('sql') || normalized.includes('join')) return sqlTrail(topic);
   if (normalized.includes('french') || normalized.includes('verb')) return frenchTrail(topic);
   return fallbackTrail(topic);
+}
+
+function pythonHashingTrail(topic: string): MemoryTrail {
+  return makeTrail(topic, [
+    ['The fingerprint press', '🫆', 'A value becomes a compact fingerprint', 'A Python object enters a brass press and leaves behind an integer stamp. The stamp helps Python choose where to look, but it is not the object itself.', '`hash(value)` returns an integer used to organize hash-based collections.'],
+    ['The frozen-key cabinet', '🧊', 'Dictionary keys must stay stable', 'Keys are frozen before entering the cabinet. If a key changed after shelving, Python could no longer find the drawer its hash selected.', 'Hashable objects need a stable hash and consistent equality; mutable lists are not valid dictionary keys.'],
+    ['The instant drawer wall', '🗄️', 'Dictionaries jump toward a bucket', 'The fingerprint points toward one drawer instead of forcing a search through the entire wall. Python then checks candidate keys for equality.', 'Dictionaries and sets use hashes for fast average-case lookup.'],
+    ['The crowded-name desk', '🪪', 'Different values can share a hash', 'Two visitors receive the same desk number, so the clerk compares their full identification before deciding whether they are equal.', 'A hash collision is allowed; Python resolves collisions and still verifies equality.'],
+    ['The password vault', '🧂', 'Built-in hashing is not password security', 'A guard rejects Python’s ordinary stamp and mixes the password with salt inside a deliberately slow vault.', 'Use a dedicated salted password-hashing algorithm—not Python `hash()`—for passwords.'],
+  ], 'Why must a Python dictionary key remain hashable and stable?', 1, 'The frozen-key cabinet showed that changing a key after placement would break the route back to its bucket.');
 }
 
 function immuneTrail(topic: string): MemoryTrail {

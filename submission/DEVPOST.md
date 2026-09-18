@@ -2,15 +2,15 @@
 
 ## One-line pitch
 
-Turn anything you study into a world you can walk through.
+Turn anything you need to remember into a world you can walk through.
 
 ## Inspiration
 
-Rereading can make a page feel familiar without making its ideas retrievable. Memory-palace techniques solve a different problem: they bind abstract information to a stable place, a striking image, and an ordered route. Loci Loom makes that method immediate enough to use between lectures instead of treating it as a separate skill to master.
+Rereading can make information feel familiar without making it retrievable. Memory-palace techniques solve a different problem: they bind abstract ideas to a stable place, a striking image, and an ordered route. Loci Loom makes that method immediate enough for technical concepts, professional knowledge, languages, or formal study.
 
 ## What it does
 
-Enter a subject or paste source notes. Loci Loom creates five linked landmarks, lays them out on a reusable palace map, and turns each concept into a place, image, and mnemonic story. After the walk, three prompts test different retrieval paths: the idea itself, where it lived, and what came next. The first answer is locked, recall accuracy is persisted, and the next review is scheduled sooner for weak routes and later for strong ones.
+Ask a question, name a topic, or paste source material. Loci Loom creates five mnemonic objects that the user places inside an illustrated room. After walking the palace, three prompts test different retrieval paths: the idea itself, where it lived, and what came next. The first answer is locked, recall accuracy is persisted, and the next review is scheduled sooner for weak routes and later for strong ones.
 
 The bundled starter trail is free, and learners can create three more. Scholar Pass opens unlimited trails and deeper adaptive practice.
 

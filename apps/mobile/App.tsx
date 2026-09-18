@@ -21,7 +21,7 @@ const trailApiUrl = process.env.EXPO_PUBLIC_TRAIL_API_URL;
 const remoteGenerator = trailApiUrl ? new HttpTrailGenerator(trailApiUrl) : undefined;
 const generator: TrailGenerator = { generate: async (topic, sourceText) => {
   const normalized = topic.toLowerCase();
-  const hasCuratedDemo = ['immune', 'sql', 'join', 'french', 'verb'].some(keyword => normalized.includes(keyword));
+  const hasCuratedDemo = ['immune', 'sql', 'join', 'french', 'verb'].some(keyword => normalized.includes(keyword)) || (normalized.includes('python') && normalized.includes('hash'));
   return (hasCuratedDemo && !sourceText?.trim()) || !remoteGenerator ? generateTrail(topic) : remoteGenerator.generate(topic, sourceText);
 } };
 
@@ -67,10 +67,10 @@ export default function App() {
 
   if (screen === 'create') return <Shell><TopBar title="New memory trail" onBack={() => go('home')} /><ScrollView contentContainerStyle={styles.page} keyboardShouldPersistTaps="handled">
     <View style={styles.spark}><Text style={styles.sparkText}>✦</Text></View><Text style={styles.hero}>What do you want to remember?</Text>
-    <Text style={styles.sub}>We’ll turn it into five strange, visual stops your mind can revisit.</Text><Text style={styles.label}>TOPIC OR CONCEPT</Text>
-    <TextInput accessibilityLabel="Topic" value={topic} onChangeText={setTopic} placeholder="e.g. How photosynthesis works" placeholderTextColor="#9994A0" multiline style={styles.input} />
-    <View style={styles.suggestionRow}>{['The immune system', 'SQL joins', 'French verbs'].map(item => <Pressable key={item} onPress={() => setTopic(item)} style={styles.chip}><Text style={styles.chipText}>{item}</Text></Pressable>)}</View>
-    <Text style={styles.label}>SOURCE NOTES · OPTIONAL</Text><TextInput accessibilityLabel="Source notes" value={sourceText} onChangeText={setSourceText} placeholder="Paste a lecture excerpt or study notes for a source-grounded trail" placeholderTextColor="#9994A0" multiline maxLength={6000} style={styles.sourceInput} /><Text style={styles.sourceHelp}>{sourceText.length.toLocaleString()} / 6,000 · Your notes are used only to weave this trail.</Text>
+    <Text style={styles.sub}>Ask a question or name anything you need to retain. We’ll turn it into five strange, visual memories.</Text><Text style={styles.label}>QUESTION, TOPIC OR CONCEPT</Text>
+    <TextInput accessibilityLabel="Topic" value={topic} onChangeText={setTopic} placeholder="e.g. What is hashing in Python?" placeholderTextColor="#9994A0" multiline style={styles.input} />
+    <View style={styles.suggestionRow}>{['What is hashing in Python?', 'How do mortgages work?', 'Why do leaves change color?'].map(item => <Pressable key={item} onPress={() => setTopic(item)} style={styles.chip}><Text style={styles.chipText}>{item}</Text></Pressable>)}</View>
+    <Text style={styles.label}>SOURCE MATERIAL · OPTIONAL</Text><TextInput accessibilityLabel="Source notes" value={sourceText} onChangeText={setSourceText} placeholder="Paste documentation, meeting notes, an article excerpt, or study material" placeholderTextColor="#9994A0" multiline maxLength={6000} style={styles.sourceInput} /><Text style={styles.sourceHelp}>{sourceText.length.toLocaleString()} / 6,000 · This material is used only to weave the current trail.</Text>
     {generationError && <View style={styles.errorCard}><Text style={styles.errorTitle}>The trail could not be woven</Text><Text style={styles.errorText}>{generationError}</Text></View>}
     <PrimaryButton label={isGenerating ? 'Weaving your world…' : 'Weave my trail'} disabled={!topic.trim() || isGenerating} onPress={async () => { try { setGenerationError(null); setIsGenerating(true); const next = await generator.generate(topic, sourceText); setTrail(next); setSavedTrails(items => [next, ...items.filter(item => item.id !== next.id)]); await repository.save(next); setScene(0); setRecallIndex(0); setRecallAnswers([]); setAnswer(null); go('map'); } catch (error) { const message = error instanceof Error ? error.message : 'Please try again.'; setGenerationError(message); Alert.alert('The trail could not be woven', message); } finally { setIsGenerating(false); } }} />
   </ScrollView></Shell>;
@@ -119,8 +119,8 @@ export default function App() {
   </ScrollView></Shell>;
 
   if (screen === 'paywall') return <Shell><TopBar title="" onBack={() => go('home')} /><ScrollView contentContainerStyle={styles.paywall}>
-    <View style={styles.orbit}><Text style={styles.orbitEmoji}>🪐</Text></View><Text style={styles.payTitle}>Build a path back to what matters.</Text><Text style={styles.sub}>Scholar Pass keeps every subject available for repeated, adaptive retrieval.</Text>
-    <View style={styles.benefits}>{['Unlimited memory trails', 'Adaptive reviews across every subject', 'A growing library of visual worlds', 'Restore access on your devices'].map(item => <View key={item} style={styles.benefit}><Text style={styles.check}>✓</Text><Text style={styles.benefitText}>{item}</Text></View>)}</View>
+    <View style={styles.orbit}><Text style={styles.orbitEmoji}>🪐</Text></View><Text style={styles.payTitle}>Build a path back to what matters.</Text><Text style={styles.sub}>Scholar Pass keeps every idea available for repeated, adaptive retrieval.</Text>
+    <View style={styles.benefits}>{['Unlimited memory trails', 'Adaptive reviews across every topic', 'A growing library of visual worlds', 'Restore access on your devices'].map(item => <View key={item} style={styles.benefit}><Text style={styles.check}>✓</Text><Text style={styles.benefitText}>{item}</Text></View>)}</View>
     <View style={styles.plan}><View><Text style={styles.best}>FULL ACCESS</Text><Text style={styles.planName}>Scholar Pass · Annual</Text><Text style={styles.planSub}>{revenueCatKey ? 'Price and terms shown in secure checkout' : 'Interactive demo entitlement'}</Text></View><Text style={styles.radio}>●</Text></View>
     <PrimaryButton label={isPurchasing ? 'Opening secure checkout…' : 'Continue with Scholar Pass'} disabled={isPurchasing} onPress={async () => { try { setIsPurchasing(true); const access = await billing.purchaseScholarPass(); setIsPro(access === 'scholar'); if (access === 'scholar') go('home'); } catch (error) { Alert.alert('Purchase unavailable', error instanceof Error ? error.message : 'Please try again.'); } finally { setIsPurchasing(false); } }} />
     <Pressable onPress={async () => { try { setIsPro((await billing.restore()) === 'scholar'); } catch { Alert.alert('Nothing to restore', 'No previous Scholar Pass was found.'); } }}><Text style={styles.fine}>{revenueCatKey ? 'Cancel anytime · Restore purchases' : 'Demo purchase mode · Restore purchases'}</Text></Pressable>

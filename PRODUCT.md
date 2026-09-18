@@ -1,12 +1,12 @@
 # Loci Loom
 
-**Promise:** Turn anything you study into a world you can walk through.
+**Promise:** Turn anything you need to remember into a world you can walk through.
 
-Loci Loom is a mobile learning game that converts a topic into a short sequence of vivid locations, characters, and retrieval challenges. Instead of rereading notes, a learner revisits a visual story, recalls the concept attached to each scene, and strengthens the trail through spaced practice.
+Loci Loom is a visual memory tool that converts a question, topic, or source into vivid locations, mnemonic images, and retrieval challenges. A user revisits the visual story, recalls the concept attached to each scene, and strengthens the trail through spaced practice.
 
 ## Why this can win
 
-- **Clear student problem:** passive rereading feels productive but produces weak recall.
+- **Broad memory problem:** passive rereading and repeated reference-checking feel productive but produce weak recall.
 - **Immediate demo:** enter “cellular respiration,” watch five memorable scenes appear, then complete a recall run.
 - **Designed product:** cinematic scenes, tactile progress, strong hierarchy, accessible motion, and an offline-first loop.
 - **Natural monetization:** the bundled starter trail is free, and learners can create three more; Scholar Pass unlocks unlimited trails and deeper adaptive practice.
