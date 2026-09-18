@@ -20,11 +20,12 @@ export type ModelTrail = z.infer<typeof ModelTrailSchema>;
 
 const gradients = [['#5B326F', '#A14F78'], ['#315D70', '#4E9085'], ['#6E422D', '#D0744F'], ['#3E477A', '#7A67AA'], ['#305A49', '#6C9B67']] as const;
 
-export function finishTrail(topic: string, modelTrail: ModelTrail) {
+export function finishTrail(topic: string, modelTrail: ModelTrail, sourceText = '') {
   return {
     id: topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
     topic,
     scenes: modelTrail.scenes.map((scene, index) => ({ ...scene, gradient: gradients[index] })),
     quiz: modelTrail.quiz,
+    sourceProvided: Boolean(sourceText.trim()),
   };
 }

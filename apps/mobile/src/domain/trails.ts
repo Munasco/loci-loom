@@ -1,5 +1,7 @@
 export type TrailScene = { place: string; emoji: string; title: string; story: string; anchor: string; gradient: readonly [string, string] };
-export type MemoryTrail = { id: string; topic: string; scenes: TrailScene[]; quiz: { prompt: string; options: string[]; correct: number; explanation: string } };
+import type { ReviewState } from './recall';
+
+export type MemoryTrail = { id: string; topic: string; scenes: TrailScene[]; quiz: { prompt: string; options: string[]; correct: number; explanation: string }; review?: ReviewState; sourceProvided?: boolean };
 
 const palettes: Array<readonly [string, string]> = [['#5B326F', '#A14F78'], ['#315D70', '#4E9085'], ['#6E422D', '#D0744F'], ['#3E477A', '#7A67AA'], ['#305A49', '#6C9B67']];
 

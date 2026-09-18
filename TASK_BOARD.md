@@ -20,9 +20,9 @@ Ship a polished, testable Expo mobile app and a sub-two-minute Remotion demo for
 - [x] Build cinematic home and subject selection.
 - [x] Build deterministic trail generation for a reliable judge demo.
 - [x] Build the five-scene memory-trail player with gradients and haptics.
-- [x] Build recall challenge, answer feedback, and a streak surface.
+- [x] Build three-angle recall, first-answer locking, accuracy scoring, and adaptive review intervals.
 - [x] Add saved-trail persistence, deduplication, and the trail library.
-- [~] Add accessibility labels and purchase error states; reduced-motion remains.
+- [x] Add accessibility labels and purchase/generation error states.
 
 ## 10–15 hours — RevenueCat and monetization
 
@@ -30,7 +30,7 @@ Ship a polished, testable Expo mobile app and a sub-two-minute Remotion demo for
 - [x] Implement entitlement state, offerings, restore purchases, and paywall UI.
 - [x] Keep a clearly labelled local demo billing adapter for tests and judge preview.
 - [x] Test both billing adapters, SDK configuration, annual offering selection, entitlements, restore, and failure state; native sandbox integration remains external.
-- [!] Create RevenueCat project and run a sandbox purchase (requires authenticated account/project credentials).
+- [ ] Create RevenueCat products and run a native sandbox purchase when store credentials are available.
 
 ## 15–19 hours — Quality gate
 
@@ -44,20 +44,19 @@ Ship a polished, testable Expo mobile app and a sub-two-minute Remotion demo for
 
 - [x] Add a 1024×1024 icon and required 1179×2556 screenshot.
 - [x] Create a five-scene Remotion composition under two minutes.
-- [x] Render the final narrated 54-second MP4, inspect a 1080p frame, and decode-check both media streams.
+- [x] Record the working product and render a narrated 49.5-second MP4; inspect representative frames and decode-check both streams.
 - [x] Write README, architecture, setup, testing, RevenueCat integration, and demo instructions.
 - [x] Add MIT license and submission copy.
 
 ## 23–24 hours — External handoff
 
-- [x] Verify `github.com/Munasco` belongs to Munachi Ernest-Eze.
-- [!] Authenticate the GitHub CLI as `Munasco` (only other accounts are currently available).
-- [ ] Create public `munasco/loci-loom`, push tested source, and confirm license visibility.
-- [ ] Prepare Devpost draft; do not submit without an explicit final review.
+- [x] Verify and publish the public `Munasco/loci-loom` repository with its MIT license.
+- [x] Prepare the Devpost draft; do not submit without an explicit final review.
+- [ ] Upload the tested MP4 to public YouTube or Vimeo and add its URL to Devpost.
 
 ## Later extensions
 
-- [x] Nebius: add the Token Factory/Nemotron server adapter, strict model-output validation, mobile HTTP boundary, and injected-network tests.
-- [!] Nebius: obtain free Builder Program credits and record a live hosted-generation proof.
-- [ ] Nebius: add mnemonic-quality evaluation traces and adaptive recall.
+- [x] Nebius: add the Token Factory/Nemotron server adapter, strict output validation, mobile HTTP boundary, and provider tests.
+- [x] Add a server-side OpenAI fallback and verify a live, source-grounded browser generation path.
+- [ ] Nebius: obtain Builder Program credits and record a hosted Nemotron-generation proof.
 - [ ] Alexa+: expose daily recall as a stateful Agent Skill/MCP flow and produce a simulated-device demo.

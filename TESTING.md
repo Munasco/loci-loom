@@ -3,14 +3,17 @@
 | Gate | Command / method | Result |
 | --- | --- | --- |
 | Type safety | `cd apps/mobile && npm run typecheck` | Pass |
-| Mobile domain and adapters | `cd apps/mobile && npm test` | 5 suites, 13 tests pass |
-| Nebius service | `cd apps/ai-api && npm run verify` | TypeScript and 4 injected-network tests pass |
+| Mobile domain and adapters | `cd apps/mobile && npm test` | 6 suites, 17 tests pass |
+| AI generation service | `cd apps/ai-api && npm run verify` | TypeScript and 9 HTTP/provider tests pass |
 | Production bundle | `cd apps/mobile && npm run export:web` | Pass |
-| Product smoke test | `cd apps/mobile && npm run smoke:web` | Home → create → five stops → recall → paywall → saved library pass |
+| Curated product smoke | `cd apps/mobile && npm run smoke:web` | Create → map → five stops → locked answer → adaptive result → paywall → persistence pass |
+| Live-AI product smoke | `cd apps/mobile && npm run smoke:ai` | Arbitrary topic + source notes → validated model trail → map → first stop pass |
+| Expo compatibility | `cd apps/mobile && npx expo-doctor` | 21/21 checks pass |
 | Video source | `cd apps/video && npm run lint` | ESLint and TypeScript pass |
-| Video still | Frame 780 at 1920×1080 | Inspected, pass |
-| Video render | `cd apps/video && npm run render` | 54.0 seconds, H.264 with measured 51.96-second voiceover |
+| Video frames | 4, 14, 27, and 42 seconds at 1920×1080 | Inspected, pass |
+| Video render | `cd apps/video && npm run render` | 49.5 seconds, H.264, real app recording, regenerated narration |
 | Video integrity | FFmpeg full decode | No errors |
+| Browser video playback | `cd apps/mobile && npm run smoke:video` | Metadata, play, and duration-aware seeks pass in Chrome |
 | Video production audit | `npm audit --omit=dev` | 0 vulnerabilities |
 | AI API production audit | `npm audit --omit=dev` | 0 vulnerabilities |
 
@@ -19,7 +22,7 @@
 - Configure the RevenueCat Test Store, `scholar` entitlement, and annual package.
 - Add `EXPO_PUBLIC_REVENUECAT_API_KEY` and run the checked-in EAS `development` build profile.
 - Complete a sandbox purchase, entitlement refresh, cancellation, and restoration on iOS or Android.
-- Confirm haptics, safe areas, and reduced-motion behavior on physical hardware.
+- Confirm haptics and safe areas on physical hardware.
 
 ## Dependency note
 

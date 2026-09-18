@@ -36,6 +36,8 @@
     "export:web": "expo export --platform web",
     "smoke:web": "npm run export:web && node scripts/smoke-web.mjs",
     "smoke:video": "node scripts/video-playback-smoke.mjs",
+    "record:demo": "npm run export:web && node scripts/record-demo.mjs",
+    "smoke:ai": "npm run export:web && node scripts/live-ai-smoke.mjs",
     "verify": "npm run typecheck && npm test && npm run smoke:web"
   },
   "jest": {

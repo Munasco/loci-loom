@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { TrailRepository } from '../domain/trailRepository';
 import type { MemoryTrail } from '../domain/trails';
+import { isMemoryTrail } from '../domain/trailValidation';
 
 const STORAGE_KEY = 'loci-loom:trails:v1';
 
@@ -10,7 +11,7 @@ export class AsyncTrailRepository implements TrailRepository {
     if (!stored) return [];
     try {
       const trails = JSON.parse(stored) as MemoryTrail[];
-      return Array.isArray(trails) ? trails : [];
+      return Array.isArray(trails) ? trails.filter(isMemoryTrail) : [];
     } catch {
       return [];
     }

@@ -2,17 +2,17 @@
 
 Turn anything you study into a world you can walk through.
 
-Loci Loom is an Expo learning game that converts a subject into five visual memory stops, then tests retrieval. A free learner can create three trails; Scholar Pass unlocks unlimited trails, adaptive recall, and voice review through a RevenueCat entitlement.
+Loci Loom is an Expo learning game that converts a subject—or the learner's own notes—into five spatial memory stops, then tests retrieval from three angles. A free learner can create three trails; Scholar Pass unlocks unlimited trails and deeper adaptive practice through a RevenueCat entitlement.
 
 ## What is working
 
-- Polished mobile flow: home → topic → five-stop trail → recall → paywall.
-- Deterministic trail generation for a reliable, offline judge demo.
+- Polished responsive flow: home → topic or source notes → spatial map → five-stop trail → three-part recall → adaptive result.
+- Deterministic curated demos plus live, schema-validated generation for arbitrary subjects.
 - RevenueCat SDK adapter for offerings, purchases, entitlement checks, and restoration.
-- Server-side Nebius Nemotron adapter with strict output validation and an opt-in mobile HTTP client.
+- Server-side Nebius Nemotron adapter, OpenAI fallback, request timeouts, CORS preflight, and strict output validation.
 - Explicit demo billing adapter when no public SDK key is configured.
-- Seventeen mobile and AI-service tests, strict TypeScript, compiled web output, and a reproducible full browser smoke test.
-- A tested 54-second Remotion submission video with a no-credit neural voiceover, built from real product screenshots. [Play the compatible MP4](submission/loci-loom-demo.mp4).
+- Twenty-six mobile and AI-service tests, strict TypeScript, compiled web output, and reproducible browser smoke tests for both curated and live-AI paths.
+- A tested 49.5-second Remotion submission video with a no-credit neural voiceover and a recording of the working product. [Play the compatible MP4](submission/loci-loom-demo.mp4).
 
 ## Run the app
 
@@ -23,6 +23,8 @@ cd apps/mobile
 npm install
 npm run web
 ```
+
+To enable arbitrary-topic generation, run `apps/ai-api` with a server-side `NEBIUS_API_KEY` or `OPENAI_API_KEY`, then set `EXPO_PUBLIC_TRAIL_API_URL` in `apps/mobile/.env.local`. Curated subjects remain available without a model provider.
 
 For the native RevenueCat path, copy `.env.example` to `.env.local`, add a public RevenueCat SDK key, and configure a `scholar` entitlement with an annual package. `expo-dev-client` and `apps/mobile/eas.json` provide the internal development-build profile required for native purchase testing; Expo Go cannot execute native purchases.
 
@@ -44,7 +46,7 @@ npm run render
 
 The same type, unit, export, and Remotion-source gates run in GitHub Actions on every push and pull request. The browser smoke test stays in the local `verify` command because it targets the installed Chrome binary directly.
 
-The browser smoke tests cover topic entry, generation, all trail stops, recall selection, paywall arrival, the saved-trail library, and real MP4 playback and seeking in Chrome. Store artwork is in `submission/`.
+The browser smoke tests cover topic and source-note entry, schema-validated model generation, the spatial map, all trail stops, first-answer locking, adaptive scheduling, paywall arrival, persistence, and real MP4 playback and seeking in Chrome. Store artwork is in `submission/`.
 
 ## Structure
 

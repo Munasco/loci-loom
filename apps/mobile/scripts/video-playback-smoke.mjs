@@ -57,7 +57,8 @@ try {
   await page.evaluate(() => document.querySelector('#demo').play());
   await page.waitForFunction(() => document.querySelector('#demo').currentTime > 0.5);
 
-  for (const target of [12, 30, 50]) {
+  const seekTargets = [12, Math.floor(metadata.duration * 0.6), Math.floor(metadata.duration) - 3];
+  for (const target of seekTargets) {
     await page.evaluate(async (time) => {
       const video = document.querySelector('#demo');
       await new Promise((resolve, reject) => {

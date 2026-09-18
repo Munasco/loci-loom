@@ -1,10 +1,14 @@
 import { createServer } from 'node:http';
 import { handleRequest } from './app.js';
 import { NebiusTrailGenerator } from './nebius.js';
+import { OpenAiTrailGenerator } from './openai.js';
 
-const apiKey = process.env.NEBIUS_API_KEY;
-if (!apiKey) throw new Error('NEBIUS_API_KEY is required');
-const generator = new NebiusTrailGenerator(apiKey);
+const generator = process.env.NEBIUS_API_KEY
+  ? new NebiusTrailGenerator(process.env.NEBIUS_API_KEY)
+  : process.env.OPENAI_API_KEY
+    ? new OpenAiTrailGenerator(process.env.OPENAI_API_KEY)
+    : undefined;
+if (!generator) throw new Error('NEBIUS_API_KEY or OPENAI_API_KEY is required');
 const port = Number(process.env.PORT ?? 8787);
 
 createServer(async (incoming, outgoing) => {
@@ -15,4 +19,4 @@ createServer(async (incoming, outgoing) => {
   const response = await handleRequest(request, generator);
   outgoing.writeHead(response.status, Object.fromEntries(response.headers));
   outgoing.end(Buffer.from(await response.arrayBuffer()));
-}).listen(port, () => console.log(`Loci Loom AI API listening on ${port}`));
+}).listen(port, () => console.log(`Loci Loom AI API listening on ${port} with ${generator.provider}`));
